@@ -1,0 +1,3 @@
+@echo off
+echo Starting PLZ CV Engine...
+start "" "%~dp0PLZ_CV_Engine.exe"

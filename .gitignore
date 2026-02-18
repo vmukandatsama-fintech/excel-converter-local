@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+activity_log.txt
+build/
+dist/
+*.spec.backup
+deployment_package/activity_log.txt
