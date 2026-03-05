@@ -1,0 +1,124 @@
+PLZ CV ENGINE - DEPLOYMENT INSTRUCTIONS
+=========================================
+
+DEPLOYMENT STEPS:
+
+1. PREREQUISITES (On Each Target PC)
+   --------------------------------
+   - Windows 10 or Windows 11
+   - Microsoft Excel installed and activated
+   - OneDrive sync configured
+   - Network access to shared folder:
+     Premium Leaf Zimbabwe\v2SavannahTEST - Collection Vouchers
+
+2. INSTALLATION (On Each Target PC)
+   ---------------------------------
+   Step 1: Copy deployment folder to desired location
+           Example: C:\Program Files\PLZ CV Engine\
+   
+   Step 2: Edit config.ini
+           - For email notifications:
+             * Set enabled = true
+             * Configure SMTP server settings
+             * Add recipient email addresses
+           - For no email:
+             * Set enabled = false
+   
+   Step 3: Test the configuration
+           - Right-click PLZ_CV_Engine.exe
+           - Select "Run as Administrator" (first time only)
+           - Watch for system tray icon
+           - Check activity_log.txt for status
+
+3. EMAIL CONFIGURATION (Optional)
+   ------------------------------
+   For Gmail:
+   1. Enable 2-factor authentication on sender account
+   2. Generate App Password at: https://myaccount.google.com/apppasswords
+   3. In config.ini:
+      smtp_server = smtp.gmail.com
+      smtp_port = 587
+      sender_email = your.email@gmail.com
+      sender_password = (paste app password here)
+      recipients = recipient1@example.com, recipient2@example.com
+
+   For Outlook/Office 365:
+      smtp_server = smtp.office365.com
+      smtp_port = 587
+      sender_email = your.email@outlook.com
+      sender_password = (your password or app password)
+
+4. AUTO-START ON BOOT (Optional)
+   -----------------------------
+   To make the application start automatically:
+   
+   Method 1 - Task Scheduler (Recommended):
+   1. Open Task Scheduler
+   2. Create Basic Task
+   3. Name: PLZ CV Engine
+   4. Trigger: At log on
+   5. Action: Start a program
+   6. Program: (path to PLZ_CV_Engine.exe)
+   7. Check "Run with highest privileges"
+   
+   Method 2 - Startup Folder:
+   1. Press Win+R, type: shell:startup
+   2. Create shortcut to PLZ_CV_Engine.exe
+   3. Place shortcut in opened folder
+
+5. FOLDER STRUCTURE
+   ----------------
+   The application automatically creates and monitors:
+   
+   C:\Users\[Username]\Premium Leaf Zimbabwe\v2SavannahTEST - Collection Vouchers\
+   ├── Json\                    # Input folder (monitored)
+   ├── Templates\               # Excel template location
+   ├── Populated Template\      # Working folder (temporary files)
+   └── PDF CVs\                 # Output folder (generated PDFs)
+
+6. TESTING
+   -------
+   1. Place a JSON file in the Json folder
+   2. Watch for PDF generation in PDF CVs folder
+   3. Check email inbox (if configured)
+   4. Review activity_log.txt for processing details
+
+7. MONITORING & LOGS
+   -----------------
+   - System tray icon shows application status
+   - Right-click icon to check status or open PDF folder
+   - activity_log.txt records all processing activities
+   - Logs are created in the same folder as the .exe
+
+8. TROUBLESHOOTING
+   ---------------
+   Problem: Application won't start
+   Solution: Run as Administrator, check Windows Defender
+
+   Problem: PDF not generated
+   Solution: Verify Excel is installed, check template exists
+
+   Problem: Email not sending
+   Solution: Test config with test_email.py, verify credentials
+
+   Problem: JSON files not detected
+   Solution: Check OneDrive sync status, verify folder permissions
+
+9. UNINSTALLATION
+   --------------
+   1. Right-click system tray icon → Exit
+   2. Remove Task Scheduler task (if created)
+   3. Delete application folder
+   4. OneDrive folders remain - delete manually if needed
+
+10. SUPPORT
+    -------
+    - Check activity_log.txt for error details
+    - Review console output (if running in console mode)
+    - Contact IT support with log files
+
+SECURITY NOTES:
+- config.ini contains email password - protect this file
+- Use app passwords, never main account passwords
+- Limit recipients to authorized personnel only
+- Regularly review activity logs for anomalies

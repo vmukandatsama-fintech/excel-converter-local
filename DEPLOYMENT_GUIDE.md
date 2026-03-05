@@ -1,8 +1,8 @@
 # PLZ CV ENGINE - DEPLOYMENT GUIDE
 
-## ✅ Deployment Package Ready!
+## ✅ Deployment Package
 
-The deployment package has been created at:
+The current deployment package is in:
 **`deployment_package/`**
 
 ---
@@ -11,7 +11,7 @@ The deployment package has been created at:
 
 ```
 deployment_package/
-├── PLZ_CV_Engine.exe              # Standalone executable (19.98 MB)
+├── PLZ_CV_Engine.exe              # Standalone executable
 ├── config.ini                     # Configuration file
 ├── Start_PLZ_CV_Engine.bat        # Quick start script
 ├── README.txt                     # Quick reference
@@ -34,8 +34,8 @@ Edit `config.ini`:
 enabled = true
 smtp_server = smtp.gmail.com
 smtp_port = 587
-sender_email = plzpopservices@gmail.com
-sender_password = wxtg rjnh mpin ujwl
+sender_email = your-email@example.com
+sender_password = your-app-password
 recipients = vmukandatsama@gmail.com, vmukandatsama@premiumzimbabwe.com
 ```
 
@@ -82,7 +82,7 @@ recipients = vmukandatsama@gmail.com, vmukandatsama@premiumzimbabwe.com
 
 ### **Option 2: Network Share**
 ```
-1. Place package on shared drive (\\SERVER\Software\PLZ_CV_Engine)
+1. Place package on shared drive (\\FILES\Software\PLZ_CV_Engine)
 2. Users copy to local drive and run
 3. Best for: 10-50 PCs
 ```
@@ -177,7 +177,6 @@ On each deployed PC, verify:
 
 **Email not sending:**
 - Verify credentials in config.ini
-- Test with: `python test_email.py`
 - Check firewall/antivirus blocking SMTP
 
 **Files not detected:**
@@ -191,7 +190,7 @@ On each deployed PC, verify:
 
 | Component | Details |
 |-----------|---------|
-| **Executable Size** | 19.98 MB |
+| **Executable Size** | Depends on build |
 | **Dependencies** | None (all bundled) |
 | **Excel Required** | Yes |
 | **Internet Required** | Only for email |
